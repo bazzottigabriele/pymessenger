@@ -139,6 +139,36 @@ class Bot:
             }
         }, notification_type)
 
+    def send_receipt_message(self, recipient_id, customer_name, order_number,
+                             currency_code, payment_method_used,
+                             link_order_summary, order_time, address,
+                             summary, adjustments, elements,
+                             notification_type=NotificationType.regular):
+        """Send receipt messages to the specified recipient.
+        https://developers.facebook.com/docs/messenger-platform/send-messages/template/receipt
+        Input:
+            recipient_id: recipient id to send to
+            elements: generic message elements to send
+        Output:
+            Response from API as <dict>
+        """
+        return self.send_message(recipient_id, {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "receipt",
+                    "recipient_name": customer_name,
+                    "order_number": order_number,
+                    "currency": currency_code,
+                    "payment_method": payment_method_used,
+                    "order_url": link_order_summary,
+                    "timestamp": order_time,
+                    "address": address,
+                    "elements": elements
+                }
+            }
+        }, notification_type)
+
     def send_button_message(self, recipient_id, text, buttons, notification_type=NotificationType.regular):
         """Send text messages to the specified recipient.
         https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template

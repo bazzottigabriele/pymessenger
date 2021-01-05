@@ -25,6 +25,7 @@ This wrapper has the following functions:
 * send_file(recipient_id, file_path)
 * send_file_url(recipient_id, file_url)
 * send_action(recipient_id, action)
+* send_receipt_message(recipient_id, customer_name, order_number, currency_code, payment_method_used, link_order_summary, order_time, address,             summary, adjustments, elements)
 * send_raw(payload)
 * get_user_info(recipient_id)
 * set_get_started(gs_obj)
@@ -96,7 +97,6 @@ bot.send_image_url(recipient_id, image_url)
 ### Todo
 
 * Structured Messages
-* Receipt Messages
 * Airlines
 * Tests!
 
